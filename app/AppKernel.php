@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new ScenarioEd\HelpBundle\ScenarioEdHelpBundle(),
             new ScenarioEd\UserBundle\ScenarioEdUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new ScenarioEd\AceEditorBundle\ScenarioEdAceEditorBundle(),
+            new Norzechowicz\AceEditorBundle\NorzechowiczAceEditorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

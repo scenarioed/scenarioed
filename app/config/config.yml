@@ -72,7 +72,7 @@ services:
         arguments: [project_id]
 
 # Set up ACE
-scenarioed_ace_editor:
+norzechowicz_ace_editor:
     autoinclude: true
     debug: true # sources not minified with uglify.js
     noconflict: false # uses ace.require instead of require
