@@ -8,6 +8,7 @@
     <link href="{{ asset('bundles/framework/css/exception_layout.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('bundles/framework/css/exception.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/formatter.css') }}" type="text/css" rel="stylesheet" />
     {% endblock %}
   </head>
 
@@ -18,11 +19,30 @@
         Organizations | 
        <a href="{{ url('project') }}">Projects</a> | 
        <a href="{{ url('help') }}">Help</a>
+       <span class="auth">
+            {% if not app.user %}
+                <a href="{{ url('fos_user_registration_register') }}">Register</a> | 
+                <a href="{{ url('fos_user_security_login') }}">Log in</a>
+            {% else %}
+                <a href="{{  url('fos_user_security_logout') }}">Log out</a>
+            {% endif  %}
+       </span>
+                
+
        {% endblock %}	
     </div>
 
+ 
     <div id="content">
-      {% block body %}{% endblock %}
+        {% for type, flashMessages in app.session.flashbag.all() %}
+            {% for flashMessage in flashMessages %}
+                <div class="flash {{ type }}">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+      {% block body %}
+      {% endblock %}
     </div>
 
     {% block javascripts %}{% endblock %}
