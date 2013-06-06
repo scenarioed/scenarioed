@@ -130,7 +130,8 @@ class FeatureController extends BaseController
         //We should check it exists and throw an exception if not but I'm avoiding that
         //since we will probably not continue in this way due to problems accessing extensions.
         try {
-            $featureNode = $this->loadFeatures($project->getRepositoryUri(), $file)[0];
+            $features = $this->loadFeatures($project->getRepositoryUri(), $file);
+            $featureNode = $features[0];
         } catch (\Exception $e) {
             throw new \Exception("Invalid feature file $file supplied. Unable to parse.");
         }
